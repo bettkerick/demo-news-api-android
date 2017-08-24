@@ -1,0 +1,28 @@
+<style type="text/css">
+
+</style>
+<ion-view view-title="Logout" class="page" >
+    <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
+        <div style="width:100%; height:auto;  overflow:hidden;"> 
+           
+           
+                <div class="ink hometabs" style="margin-top:5%;">
+                        <div class="col-100" style="margin-top:5%;">
+                    Are you sure you want to logout?
+                            <br/>
+                            <br/>
+                                                    
+                            <input ui-sref="app.login" type="submit" ng-click="logout()" value="Log out"/>
+                            <input ui-sref="app.home" type="submit" value="Cancel"/>
+
+
+                        </div>  
+                </div>
+                
+          
+            </div>
+        </div>
+        </div>
+
+    </ion-content>
+</ion-view>

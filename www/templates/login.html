@@ -1,0 +1,70 @@
+<!--<ion-view view-title="Forgot Password" align-title="left">-->
+<style type="text/css">
+.spinner svg {
+  width: 70px;
+  height: 70px;
+  stroke: #F44336;
+  fill: #253546;
+}
+.nav-bar-block{
+    display: none !important;
+}
+
+</style>
+
+
+<ion-view view-title="Login">
+    <ion-content 
+
+        style="
+            background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5) ),url(img/login.jpg) center; 
+            background-size: cover; 
+            filter: gray; 
+            filter: grayscale(1);
+            -webkit-filter: grayscale(0.1);">
+
+<ion-content ng-class="{expanded:$scope.isExpanded}" overflow-scroll="true">
+        <div class="hero slide-up " >
+            <div class="content">
+                <div class="avatar" style="background-image: url('img/logo.png');"></div>
+                <div style="border-bottom:1px #253546 solid; color:#000; overflow:hidden; padding:0px 0px; ">
+                <h3><a class="light">DC News App</a></h3>
+                <p></p>
+                </div>
+            </div>
+        </div> 
+
+<div ng-show="showspiner && !loginErrorText" style=" margin:5% auto; background:#ffffff; width:80px; padding:5px; height:80px; border-radius:15px;"><ion-spinner icon="bubbles"></ion-spinner>
+</div>
+
+<div ng-show="!showspiner">
+        <form >
+
+        <div class="col-80"style="background:#fff; margin:5% auto 3% auto; height:auto; border-radius:3px;">
+           <div class="list col-80" style="margin:auto; ">
+
+            <p style="margin-top:10px; color:#c00;">{{loginErrorText}}</p>
+            <label class="item item-input item-floating-label input-calm">     
+                <span class="input-label">Email Address</span>
+                <input type="text" name="username" ng-model="loginData.username" placeholder="Email Address">
+
+            </label><br/>
+         
+            <label class="item item-input item-floating-label input-calm">
+                <span class="input-label">Password</span>
+                <input type="password" name="password" ng-model="loginData.password" placeholder="Password">
+            </label>
+           </div>
+        </div>
+
+        <div class="list col-80" style="margin:auto; "> 
+            <a ng-click="login();" class="button button-full button-assertive ink">Login </a>
+        </form>
+            <a href="#app/recover_password" style="color:#fff; text-decoration:none; float:left;">Forgot Password?</a>
+            <!--<a href="#app/register" style="color:#fff; text-decoration:none; float:right;">Signup</a>-->
+            <!--<a href="#app/signup" style="color:#fff; text-decoration:none; float:right;">Sign Up</a>-->
+        </div>
+<div> 
+    </ion-content>
+</ion-view>
+

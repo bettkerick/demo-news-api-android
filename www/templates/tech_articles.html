@@ -1,0 +1,40 @@
+<style type="text/css">
+    .pos {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/login.jpg) center;
+        background-size: cover;
+        filter: gray;
+        filter: grayscale(1);
+        -webkit-filter: grayscale(0.1);
+    }
+
+    .center-align {
+        margin: auto;
+    }
+
+    .spinner svg {
+        width: 70px;
+        height: 70px;
+        stroke: #F44336;
+        fill: #a58110;
+    }
+</style>
+<ion-view view-title="Technology Articles">
+    <ion-content overflow-scroll="true">
+    <div class="card-holder" ng-repeat="article in tech_articles">
+    <ion-card >
+     <a href="{{article.url}}" onclick="window.open(this.href, '_blank', 'location=yes'); return false;">
+      <img src="{{article.urlToImage}}" class="news-img" />
+      <ion-card-content>
+        <span class="title">
+          {{article.title}}
+        </span>
+        </a>
+        <p class="description">
+          {{article.description}}
+        </p>
+      </ion-card-content>
+      
+    </ion-card>
+    </div>
+    </ion-content>
+</ion-view>

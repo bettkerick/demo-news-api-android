@@ -1,0 +1,180 @@
+<!--<ion-view view-title="Forgot Password" align-title="left">-->
+<style type="text/css">
+#register .ng-touched.ng-invalid {
+    background: rgb(250, 255, 189);
+  }
+#submit_btn[disabled] {background: rgb(250, 255, 189); opacity: 1;}
+#register .ng-touched.ng-valid {
+    background: lightgreen;
+  }
+#register {
+  & .ng-touched.ng-valid,
+  .ng-dirty.ng-valid{
+    background: lightgreen;
+  }
+  & .ng-touched.ng-invalid,
+  .ng-dirty.ng-invalid {
+    background: darksalmon ;
+  }
+}
+.signupage{
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(img/login.png) center;
+    background-size: cover;
+    filter: gray;
+    filter: grayscale(1);
+    -webkit-filter: grayscale(0.1);
+}
+.center-align{margin: auto;}
+</style>
+<ion-view view-title="Sign Up" >
+    <ion-content class="signupage" overflow-scroll="true">
+<ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero slide-up " >
+            <div class="content">
+                <div class="avatar" style="background-image: url('img/crown.jpg');"></div>
+                <p><a class="light">Sign Up</a></p>
+            </div>
+        </div>
+    <div ng-controller="SignupCtrl">
+        <div class="col-83" style="background:#fff; margin: 3%; height:auto; border-radius:3px;">
+
+            <div ng-show="success" class="list col-80 center-align">
+                <br/>
+                <p style="font-size:20px;">Registration Successful</p>
+
+            </div>
+
+            <form  id="register" name="register" role="form" novalidate>
+            <br/>
+                <div ng-show="!success" class="list col-80 center-align">
+                    <ul ng-repeat="fault in faults track by $index">
+                        <li>{{fault}}</li>
+                    </ul>
+
+                    <input type="text" class="form-control" name="fname" ng-model="fname" placeholder="First Name" required  ng-minlength="2"/>
+                    <div
+                        class="msg-block"
+                        ng-if="register.fname.$touched"
+                        ng-messages="register.fname.$error"
+                        style="color:maroon; display: inline-block;">
+                        <div ng-message="required" ng-if="register.fname.$error.required">The First Name field is required</div>
+                        <div ng-message="minlength" ng-if="register.fname.$error.minlength">The First Name field must be atleast 2 characters</div>
+                    </div>
+                    <br/>
+
+                    <input type="text" class="form-control" name="lname" ng-model="lname"placeholder="Last Name" required  ng-minlength="2"/>
+                    <div
+                        class="msg-block"
+                        ng-if="register.lname.$touched"
+                        ng-messages="register.lname.$error"
+                        style="color:maroon; display: inline-block;">
+                        <div ng-message="required" ng-if="register.lname.$error.required">The Last Name field is required</div>
+                        <div ng-message="minlength" ng-if="register.lname.$error.minlength">The Last Name field must be atleast 2 characters</div>
+                    </div>
+                    <br/>
+
+                    <input type="text" class="form-control" name="mobile" ng-model="mobile"placeholder="Mobile eg. 0712345678" required  ng-minlength="10" ng-maxlength="10"/>
+                    <div
+                        class="msg-block"
+                        ng-if="register.mobile.$touched"
+                        ng-messages="register.mobile.$error"
+                        style="color:maroon; display: inline-block;">
+                        <div ng-message="required" ng-if="register.mobile.$error.required">The Mobile field is required</div>
+                        <div ng-message="minlength" ng-if="register.mobile.$error.minlength">The Mobile field must be  10 digits</div>
+                        <div ng-message="maxlength" ng-if="register.mobile.$error.maxlength">The Mobile field must be  10 digits</div>
+                    </div>
+                    <br/>
+
+
+                    <input type="text" class="form-control" name="idno" ng-model="idno" placeholder="ID Number" required  ng-minlength="7" ng-maxlength="8" />
+                    <div
+                            class="msg-block"
+                            ng-if="register.idno.$touched"
+                            ng-messages="register.idno.$error"
+                            style="color:maroon; display: inline-block;">
+
+                        <div ng-message="required" ng-if="register.idno.$error.required">ID Number field is required</div>
+                        <div ng-message="pattern" ng-if="register.idno.$error.pattern">ID Number should be Digits Only</div>
+                        <div ng-message="minlength" ng-if="register.idno.$error.minlength">ID Number must be  8 digits</div>
+                        <div ng-message="maxlength" ng-if="register.idno.$error.maxlength">ID Number must be  8 digits</div>
+                    </div>
+                    <br/>
+
+                    <p style="color:#ababab;"> Select Your Region</p>
+                    <select class="form-control" ng-model="signup.region" name="region" required/>
+                    <option value="" selected>Regions</option>
+                    <option value="Nairobi" selected>Nairobi</option>
+                    <option value="Machakos">Machakos</option>
+                    <option value="Embu">Embu</option>
+                    <option value="Nyeri">Nyeri</option>
+                    <option value="Kakamega">Kakamega</option>
+                    <option value="Kericho">Kericho</option>
+                    <option value="Eldoret">Eldoret</option>
+                    <option value="Naivasha">Naivasha</option>
+                    <option value="Mombasa">Mombasa</option>
+                    <option value="Nakuru">Nakuru</option>
+                    <option value="Kisumu">Kisumu</option>
+                    <option value="Other">Other</option>
+                    </select>
+                    <div
+                            class="msg-block"
+                            ng-if="register.region.$touched"
+                            ng-messages="register.region.$error"
+                            style="color:maroon; display: inline-block;">
+                        <div ng-message="required" ng-if="register.region.$error.required">Select Your Region
+                        </div>
+                    </div>
+                    <br/>
+
+                    <input type="email" class="form-control" name="email" ng-model="email"placeholder="Email" required ng-pattern="email"/>
+                    <div
+                        class="msg-block"
+                        ng-if="register.email.$touched"
+                        ng-messages="register.email.$error"
+                        style="color:maroon; display: inline-block;">
+                        <div ng-message="required" ng-if="register.email.$error.required">The Email field is required</div>
+                        <div ng-message="pattern" ng-if="register.email.$error.email">A valid email is required</div>
+
+                    </div>
+                    <br/>
+
+                    <p>
+
+                    <input type="text" class="form-control" style="background:#f3f2f2;" name="password" ng-model="password" placeholder="Password" ng-minlength="4" ng-maxlength="8"/>
+                    <div
+                    class="msg-block"
+                    ng-if="register.password.$touched"
+                    ng-messages="register.password.$error"
+                    style="color:maroon; display: inline-block;">
+                        <div ng-message="minlength" ng-if="register.password.$error.minlength">The Password must be atleast 4 characters</div>
+                        <div ng-message="maxlength" ng-if="register.password.$error.maxlength">The Password must be not be more than 8 characters</div>
+                    </div>
+                    <br/>
+
+                    <input type="text" class="form-control" style="background:#f3f2f2;" name="re_password" ng-model="re_password"placeholder="Confirm Password"/><br/>
+                    <div ng-if="password && re_password">
+                        <p ng-show="pwdmatch" style="color:green;">Passwords Match</p>
+                        <p ng-show="!pwdmatch" style="color:maroon;">Passwords do not Match</p>
+                    </div>
+               </div>
+
+
+        <div  class="list col-80" style="margin:auto; ">
+
+            <button id="submit_btn" ng-show="!success" type="submit" ng-click="signup()" class="button button-full button-assertive ink" ng-disabled="register.$invalid">Sign Up</button>
+
+            <a id="submit_btn" ng-show="success" type="submit" href="#app/login" class="button button-full button-assertive ink">Proceed to Login</a>
+
+            <a href="#app/login" style="color:#fff; text-decoration:none; float:left;">Back to Login</a>
+            <a href="" style="color:#fff; text-decoration:none; float:right;"></a>
+            <br/>
+            <p></p>
+        </div>
+        </form>
+            </div>
+    </div>
+
+</div>
+</ion-content>
+</ion-content>
+</ion-view>
